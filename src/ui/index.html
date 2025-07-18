@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- comment out title to hide is showing on window if needed -->
+    <title>Default Window</title> 
+    <style>
+      html,
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: transparent;
+        width: 100%;
+        height: 100%;
+        border: 1px solid gray;
+        border-radius: 8px;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+      #textExample {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to stealth window</h1>
+    <p>Press ctrl+T to see 'Hello World' Text</p>
+    <div id="textExample"></div>
+  </body>
+  <script src="../Renderer/renderer.js"></script>
+</html>
