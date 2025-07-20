@@ -6,6 +6,8 @@ export function registerShortCuts(
 
   mainWindow,
   textDisplayer,
+  switchModel,
+  getLLMResponse,
 ) {
   const step = 50;
   //movement
@@ -52,6 +54,18 @@ export function registerShortCuts(
   globalShortcut.register("Control+T", () =>{
     textDisplayer();
   });
+
+  //switch Models
+  globalShortcut.register("Control+Shift+M",() =>{
+    switchModel();
+    console.log('in switch model')
+  });
+
+  //LLM Caller
+  globalShortcut.register("Control+Enter",() =>{
+    getLLMResponse();
+  });
+
 }
 //Unregister all shortcuts
 export function unregisterShortcuts() {

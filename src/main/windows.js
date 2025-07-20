@@ -2,6 +2,8 @@ import path from "path";
 import { app, BrowserWindow, Tray, Menu, screen } from "electron";
 import { captureBlocker } from "../utils/blocker.js";
 import getHwndHandle from "../utils/hwnd.js";
+import { switchModel } from "../core/modelManager.js";
+import { askLLM } from "../api/llmCaller.js";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,6 +18,12 @@ function textDisplayer() {
       the common briging name between preload and window is `channel String`
   */
   mainWindow.webContents.send("displayText", "Hello World");
+}
+
+//Call LLM
+async function  getLLMResponse(){
+  const response = await askLLM();
+  console.log(response.output);
 }
 
 export function createMainWindow() {
@@ -93,5 +101,5 @@ export function createMainWindow() {
   });
 
   //can add more function and return them to make them accessible through shortcuts
-  return { mainWindow, textDisplayer };
+  return { mainWindow, textDisplayer, switchModel, getLLMResponse };
 }

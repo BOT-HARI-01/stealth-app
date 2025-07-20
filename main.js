@@ -14,13 +14,13 @@ createEnvFile();
 
 // App startup
 app.whenReady().then(() => {
-  const  {mainWindow , textDisplayer}  = createMainWindow();
+  const  {mainWindow , textDisplayer, switchModel, getLLMResponse}  = createMainWindow();
   setupLogger(app, __dirname);
   logNativeModules(__dirname, app);
   //not dev env _ log asar
   if (!app.isPackaged) logAsarContents(__dirname, app);
 
-  registerShortCuts(mainWindow,textDisplayer);
+  registerShortCuts(mainWindow, textDisplayer, switchModel, getLLMResponse);
 })
 
 app.commandLine.appendSwitch("force-device-scale-factor", "1");
